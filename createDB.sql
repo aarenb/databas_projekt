@@ -5,7 +5,9 @@ Av: Aaren Bertilsson YH25
 
 /*
  TODO: maybe i wanna make this as a nosql instead?? likee mongoDB? 
- idk what would be best - should look into it
+ Redis?(never used, could be fun)
+ idk what would be best - should look into it. also is it allowed? lol
+ TODO: look into hybrid database solutions
  */
 
 CREATE DATABASE RatingApp;
