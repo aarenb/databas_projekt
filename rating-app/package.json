@@ -5,7 +5,7 @@
   "type": "module",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon --inspect -r dotenv/config src/server.js"
+    "start": "node src/server.js"
   },
   "contributors": [
     "Aaren Bertilsson <aaren.bertilsson1@studen.ksgyf.se>"

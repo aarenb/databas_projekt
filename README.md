@@ -23,7 +23,7 @@ Prerequirements: Docker installed
 
  ``` docker pull mongo  ```
 
- ``` docker run --name mongodb -d mongo:latest  ```
+ ``` docker run -d -p 27017:27017 --name mongodb mongo:latest  ```
 
 2. Create a .env file, following the .example.env
 
@@ -31,4 +31,4 @@ Prerequirements: Docker installed
 
 4.  ``` npm i ```
 
-5.  ``` npm run dev  ```
+5.  ``` npm start ```

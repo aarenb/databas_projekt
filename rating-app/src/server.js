@@ -6,9 +6,13 @@
  */
 
 import express from 'express'
-
+import { connectDB } from './config/mongoose.js'
+import 'dotenv/config'
 
 try {
+  // Connect to MongoDB.
+  await connectDB()
+
   const app = express()
   const port = 3000
 
