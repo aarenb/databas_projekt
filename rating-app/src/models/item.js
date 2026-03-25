@@ -49,9 +49,9 @@ const schema = new mongoose.Schema({
   }
 })
 
-// Make it so you can get category.id
+// Make it so you can get item.id
 schema.virtual('id').get(function () {
   return this._id.toHexString()
 })
 
-export const User = mongoose.model('Item', schema)
+export const Item = mongoose.model('Item', schema)

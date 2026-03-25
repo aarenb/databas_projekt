@@ -1,5 +1,5 @@
 /**
- * Mongoose model Category.
+ * Mongoose model Rating.
  *
  * @author Aaren Bertilsson <aaren.bertilsson1@student.ksgyf.se>
  * @version 1.0.0
@@ -8,11 +8,9 @@
 import mongoose from 'mongoose'
 
 const schema = new mongoose.Schema({
-  name: {
+  item: { // TODO: add validation
     type: String,
     required: true,
-    unique: true,
-    minlength: 1
   },
   creator: { // TODO: add validation
     type: String,
@@ -21,6 +19,12 @@ const schema = new mongoose.Schema({
   description: {
     type: String,
     maxlength: 250
+  },
+  stars: { 
+    type: Number,
+    min: 1,
+    max: 10,
+    required: true
   }
 }, {
   timestamps: true,
@@ -39,9 +43,9 @@ const schema = new mongoose.Schema({
   }
 })
 
-// Make it so you can get category.id
+// Make it so you can get rating.id
 schema.virtual('id').get(function () {
   return this._id.toHexString()
 })
 
-export const Category = mongoose.model('Category', schema)
+export const Rating = mongoose.model('Rating', schema)
