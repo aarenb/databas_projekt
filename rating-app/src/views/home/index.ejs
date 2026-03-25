@@ -1,3 +1,21 @@
 <main>
   <h1> Review App </h1>
+
+  <% if (!viewData?.loggedIn) { %>
+  <p> Login to access all features </p>
+  <form method="post" action="./user/login">
+    <label> Username </label>
+    <input type="text" name="username" required="required" autofocus="autofocus">
+    <br>
+    <label> Password </label>
+    <input type="password" name="password" required="required">
+    <input type="submit" value="Login">
+  </form>
+  <a href="./user/register"> New user? Click here to register </a>
+<% } %>
+<% if (viewData?.loggedIn) { %>
+  <p> You are currently logged in! </p>
+  <a href="./user/logout"> Logout </a>
+<% } %>
+
 </main>

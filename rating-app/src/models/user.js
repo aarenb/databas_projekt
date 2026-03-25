@@ -7,8 +7,9 @@
 
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
-import { isEmail } from 'validator'
+import validator from 'validator'
 
+// TODO: Add nicer looking error message for if username or email already exists
 const schema = new mongoose.Schema({
   username: {
     type: String,
@@ -33,7 +34,7 @@ const schema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-    validate: [ isEmail, 'invalid email' ]
+    validate: [ validator.isEmail, 'invalid email' ]
   }
 }, {
   timestamps: true,

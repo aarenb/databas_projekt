@@ -7,6 +7,7 @@
 
 import express from 'express'
 import expressLayouts from 'express-ejs-layouts'
+import session from 'express-session'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { connectDB } from './config/mongoose.js'
@@ -31,11 +32,34 @@ try {
   app.use(expressLayouts)
   app.set('layout', join(directoryFullName, 'views', 'layouts', 'default'))
 
+  // Populates the request object with a body object (req.body).
+  app.use(express.urlencoded({ extended: false }))
+
   // Serve static files.
   app.use(express.static(join(directoryFullName, '..', 'public')))
 
+  // Setup and use session middleware
+  const sessionOptions = {
+    name: process.env.SESSION_NAME,
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+      sameSite: 'strict'
+    }
+  }
+
+  app.use(session(sessionOptions))
+
   // Middleware to be executed before the routes.
   app.use((req, res, next) => {
+    // Flash messages - survives only a round trip.
+    if (req.session.flash) {
+      res.locals.flash = req.session.flash
+      delete req.session.flash
+    }
+
     // Pass the base URL to the views.
     res.locals.baseURL = baseURL
 
