@@ -56,7 +56,9 @@ const schema = new mongoose.Schema({
 
 // Hash password before saving it in the database
 schema.pre('save', async function () {
-  this.password = await bcrypt.hash(this.password, 8)
+  if (this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 8)
+  }
 })
 
 /**
