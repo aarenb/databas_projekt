@@ -98,4 +98,61 @@ export class UserController {
 
     res.render('user/profile', { viewData })
   }
+
+  /**
+   * Returns a page with the user's edit profile form.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  async editView (req, res) {
+    const viewData = {
+      loggedIn: req.session.user
+    }
+
+    res.render('user/edit', { viewData })
+  }
+
+  /**
+   * Updates a user.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  async updateUser (req, res) {
+    try {
+      const user = await User.findById(req.session.user._id)
+
+      if (user) {
+
+        // TODO: this is shitty code quality lol
+        if (req.body.nickname != user.nickname) {
+          user.nickname = req.body.nickname
+        }
+        if (req.body.username != user.username) {
+          user.username = req.body.usernane
+        }
+        if (req.body.email != user.email) {
+          user.email = req.body.email
+        }
+        if (req.body.bio != user.bio) {
+          user.bio = req.body.bio
+        }
+
+        await user.save()
+
+        req.session.flash = { type: 'success', text: 'The user profile was updated successfully.' }
+        req.session.user = user
+      } else {
+        req.session.flash = {
+          type: 'danger',
+          text: 'Failed updating user'
+        }
+      }
+      res.redirect('./profile')
+    } catch (error) {
+      req.session.flash = { type: 'danger', text: error.message }
+      res.redirect('./update')
+    }
+  }
 }

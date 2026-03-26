@@ -19,3 +19,6 @@ router.post('/login', (req, res, next) => controller.login(req, res, next))
 router.get('/logout', (req, res, next) => controller.logout(req, res, next))
 
 router.get('/profile', (req, res, next) => controller.showProfile(req, res, next))
+
+router.get('/update', (req, res, next) => controller.editView(req, res, next))
+router.post('/update', (req, res, next) => controller.updateUser(req, res, next))

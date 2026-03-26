@@ -1,6 +1,6 @@
 <% if (viewData?.loggedIn) { %>
 
-<h1><%= viewData.loggedIn.nickname %> 's Profile</h1>
+<h1><%= viewData.loggedIn.nickname %>'s Profile</h1>
 <div>
   <p>@<%= viewData.loggedIn.username %></p>
   <p><%= viewData.loggedIn.email %></p>
@@ -11,6 +11,7 @@
     <p> This user has no bio </p>
   <% } %>
     
+  <a href="./user/update">Edit profile</a>
 </div>
 
 <% } else { %>

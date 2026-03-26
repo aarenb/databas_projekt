@@ -1,0 +1,26 @@
+<% if (viewData?.loggedIn) { %>
+
+<h1>Edit your profile</h1>
+<form method="post" action="./user/update">
+<label> Nickname </label>
+<input type="text" name="nickname" autofocus="autofocus" value="<%= viewData.loggedIn.nickname %>">
+<br>
+<label> Username </label>
+<input type="text" name="username" value="<%= viewData.loggedIn.username %>">
+<br>
+<label> Email </label>
+<input type="text" name="email" value="<%= viewData.loggedIn.email %>">
+<br>
+<label> Bio </label>
+<textarea name="bio">
+  <%= viewData?.loggedIn?.bio %>
+</textarea>
+<br>
+<button type="submit">Save</button>
+</form>
+
+<% } else { %>
+
+  <h1> You are not logged in</h1>
+  <p> Log in to edit your profile</p>
+<% } %>
