@@ -3,12 +3,12 @@
 <h1><%= viewData.loggedIn.nickname %>'s Profile</h1>
 <div>
   <p>@<%= viewData.loggedIn.username %></p>
-  <p><%= viewData.loggedIn.email %></p>
+  <p>Email: <%= viewData.loggedIn.email %></p>
   
   <% if (viewData?.loggedIn?.bio) { %>
-    <p><%= viewData.loggedIn.bio %></p>
+    <p>About me: <%= viewData.loggedIn.bio %></p>
   <% } else { %>
-    <p> This user has no bio </p>
+    <p>About me: This user has no bio </p>
   <% } %>
     
   <a href="./user/update">Edit profile</a>
