@@ -1,0 +1,20 @@
+<% if (viewData?.loggedIn) { %>
+
+<h1><%= viewData.loggedIn.nickname %> 's Profile</h1>
+<div>
+  <p>@<%= viewData.loggedIn.username %></p>
+  <p><%= viewData.loggedIn.email %></p>
+  
+  <% if (viewData?.loggedIn?.bio) { %>
+    <p><%= viewData.loggedIn.bio %></p>
+  <% } else { %>
+    <p> This user has no bio </p>
+  <% } %>
+    
+</div>
+
+<% } else { %>
+
+  <h1> You are not logged in</h1>
+  <p> Log in to see your profile</p>
+<% } %>

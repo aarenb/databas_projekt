@@ -24,7 +24,8 @@ const schema = new mongoose.Schema({
   },
   nickname: {
     type: String,
-    maxlength: 20
+    maxlength: 20,
+    required: true
   },
   bio: {
     type: String,

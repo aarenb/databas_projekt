@@ -19,7 +19,7 @@ export class UserController {
       loggedIn: req.session.user
     }
 
-    res.render('register/index', { viewData })
+    res.render('user/register', { viewData })
   }
 
   /**
@@ -29,12 +29,12 @@ export class UserController {
    * @param {object} res - Express response object.
    */
   async registerUser (req, res) {
-    console.log(req.body)
     try {
       const user = new User({
         username: req.body.username,
         password: req.body.password,
-        email: req.body.email
+        email: req.body.email,
+        nickname: req.body.username
       })
 
       await user.save()
@@ -83,5 +83,19 @@ export class UserController {
       req.session.flash = { type: 'danger', text: error.message }
       res.redirect('..')
     }
+  }
+
+  /**
+   * Returns a page with the user's profile.
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   */
+  async showProfile (req, res) {
+    const viewData = {
+      loggedIn: req.session.user
+    }
+
+    res.render('user/profile', { viewData })
   }
 }
