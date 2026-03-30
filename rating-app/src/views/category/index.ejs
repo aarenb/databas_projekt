@@ -1,0 +1,19 @@
+<h1> All categories </h1>
+
+<% if (viewData?.categories) { %>
+
+  <div>
+  <% for (const category of viewData.categories) { %>
+    <div>
+      <h2><%= category.name %></h2>
+      <p>Made by: @<%= category.creator %></p>
+      <p><%= category.description %></p>
+    </div>
+  <% } %>
+  </div>
+
+<% } else { %>
+  <p> There are currently no categories avaliable - you should create one!</p>
+<% } %>
+
+<a href="./category/create"> Add a new category </a>

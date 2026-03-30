@@ -39,9 +39,4 @@ const schema = new mongoose.Schema({
   }
 })
 
-// Make it so you can get category.id
-schema.virtual('id').get(function () {
-  return this._id.toHexString()
-})
-
 export const Category = mongoose.model('Category', schema)

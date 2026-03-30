@@ -1,0 +1,16 @@
+<h1> Add a new category </h1>
+<% if (viewData?.loggedIn) { %>
+<form method="post" action="./category/create">
+  <label> Name </label>
+  <input type="text" name="name" required="required" autofocus="autofocus">
+  <br>
+  <label> Description </label>
+  <textarea name="description">
+  </textarea>
+  <input type="submit" value="Create">
+</form>
+<% } else { %>
+  <p> You are not currently logged in, log in to add a new category</p>
+<% } %>
+
+<a href="./">Back</a>

@@ -77,9 +77,4 @@ schema.statics.authenticate = async function (username, password) {
   return user
 }
 
-// Make it so you can get user.id
-schema.virtual('id').get(function () {
-  return this._id.toHexString()
-})
-
 export const User = mongoose.model('User', schema)

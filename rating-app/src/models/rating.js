@@ -43,9 +43,5 @@ const schema = new mongoose.Schema({
   }
 })
 
-// Make it so you can get rating.id
-schema.virtual('id').get(function () {
-  return this._id.toHexString()
-})
 
 export const Rating = mongoose.model('Rating', schema)
