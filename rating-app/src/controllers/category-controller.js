@@ -6,6 +6,7 @@
  */
 
 import { Category } from '../models/category.js'
+import { Item } from '../models/item.js'
 
 export class CategoryController {
   /**
@@ -23,6 +24,29 @@ export class CategoryController {
       }
 
       res.render('category/index', { viewData })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  /**
+   * Gets a certain category and all items in it, and renders a view
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
+   */
+  async showCategory (req, res, next) {
+    try {
+      const category = (await Category.findById(req.params.id)).toObject()
+      const items = (await Item.find({category: category.name})).map(item => item.toObject())
+
+      const viewData = {
+        category,
+        items
+      }
+
+      res.render('category/one', { viewData })
     } catch (error) {
       next(error)
     }

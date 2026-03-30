@@ -1,0 +1,32 @@
+<% if (viewData?.category) { %>
+  <div>
+  <h1><%= viewData.category.name %></h1>
+  <p>Made by: @<%= viewData.category.creator %></p>
+  <p><%= viewData.category.description %></p>
+
+  <h2> All items in this category</h2>
+  <% if (viewData?.items[1]) { %>
+  <% for (const item of viewData.items) { %>
+    <div>
+      <h2><a href="./item/<%= item.id %>"><%= item.name %></a></h2>
+      <% if (item?.imgUrl) { %>
+      <img src="<%= item.imgUrl %>" width="25">
+      <% } %>
+      <p>Category: <%= item.category %></p>
+      <p>Made by: @<%= item.creator %></p>
+      <% if (item?.brand) { %>
+        <p>Brand: <%= item.brand %></p>
+      <% } %>
+      <p><%= item?.description %></p>
+    </div>
+  <% } %>
+  <% } else { %>
+    <p> There are currently no items in this category</p>
+  <% } %>
+  </div>
+
+<% } else { %>
+  <p> Error getting the category info</p>
+<% } %>
+
+<a href="./">Back</a>
