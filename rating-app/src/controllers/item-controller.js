@@ -7,6 +7,7 @@
 
 import { Item } from '../models/item.js'
 import { Category } from '../models/category.js'
+import { Rating } from '../models/rating.js'
 
 export class ItemController {
   /**
@@ -44,6 +45,29 @@ export class ItemController {
 
     res.render('item/add', { viewData })
   }
+
+  /**
+     * Gets a certain item and all ratings of it, and renders a view
+     *
+     * @param {object} req - Express request object.
+     * @param {object} res - Express response object.
+     * @param {Function} next - Express next middleware function.
+     */
+    async showItem (req, res, next) {
+      try {
+        const item = (await Item.findById(req.params.id)).toObject()
+        const ratings = (await Rating.find({item: item.id})).map(item => item.toObject())
+  
+        const viewData = {
+          item,
+          ratings
+        }
+  
+        res.render('item/one', { viewData })
+      } catch (error) {
+        next(error)
+      }
+    }
 
   /**
        * Creates a new item.

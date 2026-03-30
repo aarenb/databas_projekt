@@ -14,5 +14,7 @@ const controller = new ItemController()
 
 router.get('/', (req, res, next) => controller.index(req, res, next))
 
+router.get('/:id', (req, res, next) => controller.showItem(req, res, next))
+
 router.get('/create', (req, res, next) => controller.addView(req, res, next))
 router.post('/create', (req, res, next) => controller.createItem(req, res, next))

@@ -10,7 +10,7 @@
     <div>
       <h2><a href="./item/<%= item.id %>"><%= item.name %></a></h2>
       <% if (item?.imgUrl) { %>
-      <img src="<%= item.imgUrl %>" width="25">
+      <img src="<%= item.imgUrl %>" width="150">
       <% } %>
       <p>Category: <%= item.category %></p>
       <p>Made by: @<%= item.creator %></p>
@@ -29,4 +29,4 @@
   <p> Error getting the category info</p>
 <% } %>
 
-<a href="./category">Back</a>
+<a href=".">Back</a>

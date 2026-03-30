@@ -1,0 +1,31 @@
+<% if (viewData?.item) { %>
+  <div>
+  <h2><a href="./item/<%= viewData.item.id %>"><%= viewData.item.name %></a></h2>
+      <% if (viewData.item?.imgUrl) { %>
+      <img src="<%= viewData.item.imgUrl %>" width="150">
+      <% } %>
+      <p>Category: <%= viewData.item.category %></p>
+      <p>Made by: @<%= viewData.item.creator %></p>
+      <p>Brand: <%= viewData.item.brand %></p>
+      <p><%= viewData.item.description %></p>
+
+  <h2> All ratings for this category</h2>
+  <% if (viewData?.ratings[1]) { %>
+  <% for (const rating of viewData.ratings) { %>
+    <div>
+      <h2><a href="./rating/<%= rating.id %>"><%= rating.title %></a></h2>
+      <p>Stars: <%= rating.description %>/10</p>
+      <p>Made by: @<%= rating.creator %></p>
+      <p><%= rating.description %></p>
+    </div>
+  <% } %>
+  <% } else { %>
+    <p> There are currently no ratings for this item</p>
+  <% } %>
+  </div>
+
+<% } else { %>
+  <p> Error getting the item info</p>
+<% } %>
+
+<a href="..">Back</a>
