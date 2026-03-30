@@ -62,7 +62,8 @@ export class ItemController {
             description: req.body.description,
             creator: req.session.user.username,
             brand,
-            imgUrl: req.body.imgUrl
+            imgUrl: req.body.imgUrl,
+            category: req.body.category
           })
     
           await item.save()
