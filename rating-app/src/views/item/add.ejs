@@ -1,0 +1,33 @@
+<h1> Add a new item </h1>
+<% if (viewData?.loggedIn) { %>
+  <% if (viewData?.categories) { %>
+<form method="post" action="./item/create">
+  <label> Name </label>
+  <input type="text" name="name" required="required" autofocus="autofocus">
+  <br>
+  <label> Category </label>
+  <select name="category" required="required">
+    <% for (const category of viewData.categories) { %>
+    <option value="<%= category.name %>"><%= category.name %></option>
+    <% } %>
+  </select>
+  <br>
+  <label> Brand </label>
+  <input type="text" name="brand">
+  <br>
+  <label> Image URL </label>
+  <input type="text" name="imgUrl">
+  <br>
+  <label> Description </label>
+  <textarea name="description">
+  </textarea>
+  <input type="submit" value="Create">
+</form>
+<% } else { %>
+  <p> There are currently no categories, please add one before adding an item</p>
+<% } %>
+<% } else { %>
+  <p> You are not currently logged in, log in to add a new item</p>
+<% } %>
+
+<a href="./">Back</a>s

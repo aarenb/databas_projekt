@@ -1,0 +1,24 @@
+<h1> All items </h1>
+
+<% if (viewData?.items) { %>
+
+  <div>
+  <% for (const item of viewData.items) { %>
+    <div>
+      <h2><a href="./item/<%= item.id %>"><%= item.name %></a></h2>
+      <% if (item?.imgUrl) { %>
+      <img src="<%= item.imgUrl %>" width="25">
+      <% } %>
+      <p>Category: <%= item.category %></p>
+      <p>Made by: @<%= item.creator %></p>
+      <p>Brand: <%= item.brand %></p>
+      <p><%= item?.description %></p>
+    </div>
+  <% } %>
+  </div>
+
+<% } else { %>
+  <p> There are currently no items avaliable - you should add one!</p>
+<% } %>
+
+<a href="./item/create"> Add a new item </a>
