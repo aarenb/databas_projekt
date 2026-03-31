@@ -14,7 +14,7 @@
   <% for (const rating of viewData.ratings) { %>
     <div>
       <h2><a href="./rating/<%= rating.id %>"><%= rating.title %></a></h2>
-      <p>Stars: <%= rating.description %>/10</p>
+      <p>Stars: <%= rating.stars %>/10</p>
       <p>Made by: @<%= rating.creator %></p>
       <p><%= rating.description %></p>
     </div>

@@ -12,9 +12,16 @@ Key elements:
 - Items
 - Ratings
 
-The rating app is here created as an express node.js webapp, unsure if this is what i will keep in the future becasue i want this to be avaliable as a mobile app, which i've never made before, but this is just a simplified mockup used to test the database
+The rating app is here created as an express node.js webapp, unsure if this is what i will keep in the future becasue i want this to be avaliable as a mobile app, which i've never made before, but this is just a simplified mockup used to test the database. Please note that is why it looks kida ugly, it is just intended to test the functionality I've worked on.
 
 Database choice is MongoDB, since it works well with webapps due to JSON, as well as scalability if this app ends up popular with lots of users adding ratings and interacting with each other at the same time. Would be fun to add features such as comments in the future, which might end up being too much for an SQL database depending on amount of users
+
+Functionalities I would like to add in the future (that I didn't have the time for during this assignment, since I haven't used genai to generate any of this code)  
+- Ability to follow other users
+- Ability to like ratings, and also leave comments
+- Sorting & search functions (for categories, items & ratings)
+
+Thanks to using MongoDB and the current database constructions all of these functions should be relatively easy to implement.
 
 ## How to run this application
 

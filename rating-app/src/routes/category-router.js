@@ -14,7 +14,7 @@ const controller = new CategoryController()
 
 router.get('/', (req, res, next) => controller.index(req, res, next))
 
-router.get('/:id', (req, res, next) => controller.showCategory(req, res, next))
-
 router.get('/create', (req, res, next) => controller.addView(req, res, next))
 router.post('/create', (req, res, next) => controller.createCategory(req, res, next))
+
+router.get('/:id', (req, res, next) => controller.showCategory(req, res, next))

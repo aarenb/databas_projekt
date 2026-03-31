@@ -1,0 +1,30 @@
+<h1> Add a new rating </h1>
+<% if (viewData?.loggedIn) { %>
+  <% if (viewData?.items) { %>
+<form method="post" action="./rating/create">
+  <label> Item </label>
+  <select name="item" required="required" autofocus="autofocus">
+    <% for (const item of viewData.items) { %>
+    <option value="<%= item.name %>"><%= item.name %></option>
+    <% } %>
+  </select>
+  <br>
+  <label> Title </label>
+  <input type="text" name="title" required="required">
+  <br>
+  <label> Stars (1-10) </label>
+  <input type="number" name="stars" min="1" max="10">
+  <br>
+  <label> Description </label>
+  <textarea name="description">
+  </textarea>
+  <input type="submit" value="Create">
+</form>
+<% } else { %>
+  <p> There are currently no items, please add one before trying to rate it</p>
+<% } %>
+<% } else { %>
+  <p> You are not currently logged in, log in to add a rating</p>
+<% } %>
+
+<a href="..">Back</a>

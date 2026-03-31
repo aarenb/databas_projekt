@@ -10,6 +10,7 @@ import { HomeController } from '../controllers/home-controller.js'
 import { router as userRouter } from './user-router.js'
 import { router as categoryRouter } from './category-router.js'
 import { router as itemRouter } from './item-router.js'
+import { router as ratingRouter } from './rating-router.js'
 
 export const router = express.Router()
 
@@ -18,5 +19,6 @@ const controller = new HomeController()
 router.use('/user', userRouter)
 router.use('/category', categoryRouter)
 router.use('/item', itemRouter)
+router.use('/rating', ratingRouter)
 
 router.get('/', (req, res, next) => controller.index(req, res, next))

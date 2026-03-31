@@ -1,0 +1,14 @@
+<% if (viewData?.rating) { %>
+  <div>
+  <h2><a href="./rating/<%= viewData.rating.id %>"><%= viewData.rating.title %></a></h2>
+  <p> Item: <%= viewData.rating.item %></p>
+  <p>Stars: <%= viewData.rating.stars %>/10</p>
+      <p>Made by: @<%= viewData.rating.creator %></p>
+      <p><%= viewData.rating.description %></p>
+  </div>
+
+<% } else { %>
+  <p> Error getting the rating info</p>
+<% } %>
+
+<a href="..">Back</a>

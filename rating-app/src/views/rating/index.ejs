@@ -1,0 +1,21 @@
+<h1> All ratings </h1>
+
+<% if (viewData?.ratings[0]) { %>
+
+  <div>
+  <% for (const rating of viewData.ratings) { %>
+    <div>
+      <h2><a href="./rating/<%= rating.id %>"><%= rating.title %></a></h2>
+      <p>Item: <%= rating.item %></p>
+      <p>Stars: <%= rating.stars %>/10</p>
+      <p>Made by: @<%= rating.creator %></p>
+      <p><%= rating.description %></p>
+    </div>
+  <% } %>
+  </div>
+
+<% } else { %>
+  <p> There are currently no ratings avaliable - you should make one!</p>
+<% } %>
+
+<a href="./rating/create"> Add a new rating </a>
