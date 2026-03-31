@@ -18,6 +18,7 @@ Database choice is MongoDB, since it works well with webapps due to JSON, as wel
 
 Functionalities I would like to add in the future (that I didn't have the time for during this assignment, since I haven't used genai to generate any of this code)  
 - Ability to follow other users
+- Ability to favorite categories & items
 - Ability to like ratings, and also leave comments
 - Sorting & search functions (for categories, items & ratings)
 

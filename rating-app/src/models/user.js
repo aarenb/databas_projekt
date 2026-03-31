@@ -36,6 +36,10 @@ const schema = new mongoose.Schema({
     unique: true,
     required: true,
     validate: [ validator.isEmail, 'invalid email' ]
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now
   }
 }, {
   timestamps: true,

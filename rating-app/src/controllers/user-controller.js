@@ -121,13 +121,9 @@ export class UserController {
    */
   async updateUser (req, res) {
     try {
-      console.log(req.session.user)
       const user = await User.findById(req.session.user._id)
 
       if (user) {
-
-        console.log(user)
-
         // TODO: this is shitty code quality lol
         if (req.body.nickname != user.nickname) {
           user.nickname = req.body.nickname

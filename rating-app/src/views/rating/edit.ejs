@@ -1,0 +1,18 @@
+<h1> Edit your rating </h1>
+<form method="post" action="./rating/<%= viewData.rating.id %>/update">
+  <p> Item: <%= viewData.rating.item %> (this can't be edited)</p>
+  <br>
+  <label> Title </label>
+  <input type="text" name="title" value="<%= viewData.rating.title %>">
+  <br>
+  <label> Stars (1-10) </label>
+  <input type="number" name="stars" min="1" max="10" value="<%= viewData.rating.stars %>">
+  <br>
+  <label> Description </label>
+  <textarea name="description">
+    <%= viewData.rating.description %>
+  </textarea>
+  <input type="submit" value="Save">
+</form>
+
+<a href="..">Back</a>

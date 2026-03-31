@@ -7,6 +7,10 @@
       <p><%= viewData.rating.description %></p>
   </div>
 
+  <% if (viewData?.loggedIn?.username === viewData.rating.creator) { %>
+  <a href="./rating/<%= viewData.rating.id %>/update">Edit rating </a>
+  <a href="./rating/<%= viewData.rating.id %>/delete">Delete rating </a>
+  <% } %>
 <% } else { %>
   <p> Error getting the rating info</p>
 <% } %>
