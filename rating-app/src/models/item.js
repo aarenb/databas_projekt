@@ -14,12 +14,14 @@ const schema = new mongoose.Schema({
     unique: true,
     minlength: 1
   },
-  category: { // TODO: add validation
-    type: String,
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+     ref: 'Category',
     required: true
   },
-  creator: { // TODO: add validation
-    type: String,
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   },
   description: {
@@ -47,6 +49,16 @@ const schema = new mongoose.Schema({
       delete ret.__v
     }
   }
+})
+
+schema.pre('find', function () {
+  this.populate('creator')
+  this.populate('category')
+})
+
+schema.pre('findOne', function () {
+  this.populate('creator')
+  this.populate('category')
 })
 
 export const Item = mongoose.model('Item', schema)

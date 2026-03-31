@@ -77,7 +77,7 @@ export class RatingController {
           const rating = new Rating({
             item: req.body.item,
             description: req.body.description,
-            creator: req.session.user.username,
+            creator: req.session.user._id,
             stars: req.body.stars,
             title: req.body.title
           })
@@ -195,7 +195,7 @@ export class RatingController {
     } else {
       const rating = await Rating.findById(req.params.id)
 
-      if (req.session.user.username !== rating.creator) {
+      if (req.session.user.username !== rating.creator.username) {
         res.status(403).send('Forbidden')
       }
     }

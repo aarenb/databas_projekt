@@ -4,8 +4,8 @@
       <% if (viewData.item?.imgUrl) { %>
       <img src="<%= viewData.item.imgUrl %>" width="150">
       <% } %>
-      <p>Category: <%= viewData.item.category %></p>
-      <p>Made by: @<%= viewData.item.creator %></p>
+      <p>Category: <%= viewData.item.category.name %></p>
+      <p>Made by: @<%= viewData.item.creator.username %></p>
       <p>Brand: <%= viewData.item.brand %></p>
       <p><%= viewData.item.description %></p>
 
@@ -15,7 +15,7 @@
     <div>
       <h2><a href="./rating/<%= rating.id %>"><%= rating.title %></a></h2>
       <p>Stars: <%= rating.stars %>/10</p>
-      <p>Made by: @<%= rating.creator %></p>
+      <p>Made by: @<%= rating.creator.username %></p>
       <p><%= rating.description %></p>
     </div>
   <% } %>

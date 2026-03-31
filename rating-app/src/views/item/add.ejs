@@ -8,7 +8,7 @@
   <label> Category </label>
   <select name="category" required="required">
     <% for (const category of viewData.categories) { %>
-    <option value="<%= category.name %>"><%= category.name %></option>
+    <option value="<%= category.id %>"><%= category.name %></option>
     <% } %>
   </select>
   <br>

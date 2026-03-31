@@ -39,8 +39,9 @@ export class CategoryController {
   async showCategory (req, res, next) {
     try {
       const category = (await Category.findById(req.params.id)).toObject()
-      const items = (await Item.find({category: category.name})).map(item => item.toObject())
+      const items = (await Item.find({'category.id': req.params.id})).map(item => item.toObject())
 
+      console.log(category)
       const viewData = {
         category,
         items
@@ -74,10 +75,11 @@ export class CategoryController {
      */
     async createCategory (req, res) {
       try {
+        console.log(req.session.user)
         const category = new Category({
           name: req.body.name,
           description: req.body.description,
-          creator: req.session.user.username
+          creator: req.session.user._id
         })
   
         await category.save()

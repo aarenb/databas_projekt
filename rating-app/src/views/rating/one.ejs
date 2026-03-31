@@ -1,13 +1,13 @@
 <% if (viewData?.rating) { %>
   <div>
   <h2><a href="./rating/<%= viewData.rating.id %>"><%= viewData.rating.title %></a></h2>
-  <p> Item: <%= viewData.rating.item %></p>
+  <p> Item: <%= viewData.rating.item.name %></p>
   <p>Stars: <%= viewData.rating.stars %>/10</p>
-      <p>Made by: @<%= viewData.rating.creator %></p>
+      <p>Made by: @<%= viewData.rating.creator.username %></p>
       <p><%= viewData.rating.description %></p>
   </div>
 
-  <% if (viewData?.loggedIn?.username === viewData.rating.creator) { %>
+  <% if (viewData?.loggedIn?.username === viewData.rating.creator.username) { %>
   <a href="./rating/<%= viewData.rating.id %>/update">Edit rating </a>
   <a href="./rating/<%= viewData.rating.id %>/delete">Delete rating </a>
   <% } %>

@@ -6,7 +6,7 @@
   <% for (const category of viewData.categories) { %>
     <div>
       <h2><a href="./category/<%= category.id %>"><%= category.name %></a></h2>
-      <p>Made by: @<%= category.creator %></p>
+      <p>Made by: @<%= category.creator.username %></p>
       <p><%= category.description %></p>
     </div>
   <% } %>

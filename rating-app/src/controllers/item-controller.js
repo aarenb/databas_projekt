@@ -56,7 +56,7 @@ export class ItemController {
     async showItem (req, res, next) {
       try {
         const item = (await Item.findById(req.params.id)).toObject()
-        const ratings = (await Rating.find({item: item.name})).map(item => item.toObject())
+        const ratings = (await Rating.find({'item.id': req.params.id})).map(item => item.toObject())
   
         const viewData = {
           item,
@@ -81,10 +81,11 @@ export class ItemController {
           if (!brand) {
             brand = 'None'
           }
+
           const item = new Item({
             name: req.body.name,
             description: req.body.description,
-            creator: req.session.user.username,
+            creator: req.session.user._id,
             brand,
             imgUrl: req.body.imgUrl,
             category: req.body.category

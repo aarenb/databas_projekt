@@ -8,16 +8,18 @@
 import mongoose from 'mongoose'
 
 const schema = new mongoose.Schema({
-  item: { // TODO: add validation
-    type: String,
+  item: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Item',
     required: true,
   },
   title: {
     type: String,
     required: true,
   },
-  creator: { // TODO: add validation
-    type: String,
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   },
   description: {
@@ -47,5 +49,14 @@ const schema = new mongoose.Schema({
   }
 })
 
+schema.pre('find', function () {
+  this.populate('creator')
+  this.populate('item')
+})
+
+schema.pre('findOne', function () {
+  this.populate('creator')
+  this.populate('item')
+})
 
 export const Rating = mongoose.model('Rating', schema)

@@ -1,6 +1,6 @@
 <h1> Edit your rating </h1>
 <form method="post" action="./rating/<%= viewData.rating.id %>/update">
-  <p> Item: <%= viewData.rating.item %> (this can't be edited)</p>
+  <p> Item: <%= viewData.rating.item.name %> (this can't be edited)</p>
   <br>
   <label> Title </label>
   <input type="text" name="title" value="<%= viewData.rating.title %>">
