@@ -9,8 +9,8 @@
       <p>Brand: <%= viewData.item.brand %></p>
       <p><%= viewData.item.description %></p>
 
-  <h2> All ratings for this category</h2>
-  <% if (viewData?.ratings[1]) { %>
+  <h2> All ratings for this item</h2>
+  <% if (viewData?.ratings[0]) { %>
   <% for (const rating of viewData.ratings) { %>
     <div>
       <h2><a href="./rating/<%= rating.id %>"><%= rating.title %></a></h2>

@@ -5,14 +5,14 @@
   <p><%= viewData.category.description %></p>
 
   <h2> All items in this category</h2>
-  <% if (viewData?.items[1]) { %>
+  <% if (viewData?.items[0]) { %>
   <% for (const item of viewData.items) { %>
     <div>
       <h2><a href="./item/<%= item.id %>"><%= item.name %></a></h2>
       <% if (item?.imgUrl) { %>
       <img src="<%= item.imgUrl %>" width="150">
       <% } %>
-      <p>Category: <%= item.category %></p>
+      <p>Category: <%= item.category.name %></p>
       <p>Made by: @<%= item.creator.username %></p>
       <% if (item?.brand) { %>
         <p>Brand: <%= item.brand %></p>

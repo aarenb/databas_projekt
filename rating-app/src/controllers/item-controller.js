@@ -56,11 +56,19 @@ export class ItemController {
     async showItem (req, res, next) {
       try {
         const item = (await Item.findById(req.params.id)).toObject()
-        const ratings = (await Rating.find({'item.id': req.params.id})).map(item => item.toObject())
+
+        const ratings = await Rating.find({}).populate({
+          path: 'item',
+          match: {name: { $eq: item.name}},
+        })
+
+        const filteredRatings = ratings.filter(
+          rating => rating.item !== null
+        )
   
         const viewData = {
           item,
-          ratings
+          ratings: filteredRatings
         }
   
         res.render('item/one', { viewData })
