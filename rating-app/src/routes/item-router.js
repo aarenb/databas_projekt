@@ -18,3 +18,5 @@ router.get('/create', (req, res, next) => controller.addView(req, res, next))
 router.post('/create', (req, res, next) => controller.createItem(req, res, next))
 
 router.get('/:id', (req, res, next) => controller.showItem(req, res, next))
+
+router.post('/brand', (req, res, next) => controller.indexBrand(req, res, next))

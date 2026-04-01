@@ -1,4 +1,14 @@
 <h1> All items </h1>
+<p> Only show with this brand:</p>
+<form method="post" action="./item/brand">
+  <select name="brand" required="required">
+    <option value="all">All</option>
+    <% for (const item of viewData.allItems) { %>
+    <option value="<%= item.brand %>"><%= item.brand %></option>
+    <% } %>
+  </select>
+  <input type="submit" value="Search">
+</form>
 
 <% if (viewData?.items[0]) { %>
 

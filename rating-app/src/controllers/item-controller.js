@@ -19,11 +19,45 @@ export class ItemController {
    */
   async index (req, res, next) {
     try {
+      const items = (await Item.find())
+          .map(item => item.toObject())
+
       const viewData = {
-        items: (await Item.find())
+        items,
+        allItems: items
+      }
+
+      res.render('item/index', { viewData })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  /**
+   * Gets all items from DB belonging to a certain brand and renders a view with them
+   *
+   * @param {object} req - Express request object.
+   * @param {object} res - Express response object.
+   * @param {Function} next - Express next middleware function.
+   */
+  async indexBrand (req, res, next) {
+    try {
+      let items
+      if(req.body.brand !== 'all') {
+        items = (await Item.find({brand: req.body.brand}))
+          .map(item => item.toObject())
+      } else {
+        items = (await Item.find())
           .map(item => item.toObject())
       }
 
+      const allItems = (await Item.find())
+          .map(item => item.toObject())
+  
+      const viewData = {
+        items,
+        allItems
+      }
       res.render('item/index', { viewData })
     } catch (error) {
       next(error)
