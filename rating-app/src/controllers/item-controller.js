@@ -22,9 +22,13 @@ export class ItemController {
       const items = (await Item.find())
           .map(item => item.toObject())
 
+      // TODO: make neater   
+      const allBrands = items.map(item => item.brand)
+      const brands = [...new Set(allBrands)]
+
       const viewData = {
         items,
-        allItems: items
+        brands
       }
 
       res.render('item/index', { viewData })
@@ -51,12 +55,16 @@ export class ItemController {
           .map(item => item.toObject())
       }
 
+      // TODO: make neater
       const allItems = (await Item.find())
           .map(item => item.toObject())
+
+      const allBrands = allItems.map(item => item.brand)
+      const brands = [...new Set(allBrands)]
   
       const viewData = {
         items,
-        allItems
+        brands
       }
       res.render('item/index', { viewData })
     } catch (error) {
