@@ -40,20 +40,13 @@ export class CategoryController {
     try {
       const category = (await Category.findById(req.params.id)).toObject()
       
-      const items = await Item.find({}).populate({
-        path: 'category',
-        match: {name: { $eq: category.name}},
-      })
+      const allItems = (await Item.find()).map(item => item.toObject())
 
-      const filteredItems = items.filter(
-        item => item.category !== null
-      )
-
-      console.log(filteredItems)
+      const items = allItems.filter((item) => item.category.name === category.name)
 
       const viewData = {
         category,
-        items: filteredItems
+        items
       }
 
       res.render('category/one', { viewData })
