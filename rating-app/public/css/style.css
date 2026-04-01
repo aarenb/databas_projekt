@@ -1,3 +1,14 @@
 body {
   background-color: rgb(189, 255, 226);
 }
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+}
+
+.navs{
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+}
