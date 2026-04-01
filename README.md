@@ -6,11 +6,13 @@ An app where users can rate anything! Pondering on a nicer name for it lmao but 
 
 This is a database for the app I am wanting to develop as a hobby - 2 birds 1 stone am I right
 
-Key elements:
-- Users
-- Categories (for the items that you can rate)
-- Items
-- Ratings
+Schemas:
+- User
+- Category
+- Item
+- Rating
+
+The documents in the different schemas are connected to each other using objectid references to the other relavent documents. A category has a user (owner) ref, an item has a category & user (owner) ref, and a rating has a item and user (owner) ref. These are used to lookup and match documents from the database, as well as authorization of who can edit/delete a document (using the user owner ref).
 
 The rating app is here created as an express node.js webapp, unsure if this is what i will keep in the future becasue i want this to be avaliable as a mobile app, which i've never made before, but this is just a simplified mockup used to test the database. Please note that is why it looks kida ugly, it is just intended to test the functionality I've worked on.
 
